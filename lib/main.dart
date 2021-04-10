@@ -5,6 +5,7 @@ import 'splashscreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:fswitch/fswitch.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 void main() {
   runApp(MyApp());
@@ -208,7 +209,7 @@ class Main extends StatelessWidget {
                               )),
                         ),
                         SizedBox(width: 10),
-                        Text("Insert here") // Face selection
+                        Carousal()
                       ],
                     ),
                   )
@@ -421,6 +422,41 @@ class Main extends StatelessWidget {
                 ])
               ],
             )));
+  }
+}
+
+class Carousal extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child:Container(
+        child:CarouselSlider(
+          items: [
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child:CircleAvatar(backgroundColor:Colors.white,radius: 100,backgroundImage:NetworkImage('assets/Images/musk.png'),)
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: CircleAvatar(backgroundColor:Colors.white,radius: 100,backgroundImage:NetworkImage('assets/Images/obama.jpg'),)
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: CircleAvatar(backgroundColor:Colors.white,radius: 100,backgroundImage:NetworkImage('assets/Images/gandhi.jpg'))
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: CircleAvatar(backgroundColor:Colors.white,radius: 100,backgroundImage:NetworkImage('assets/Images/trump.png'),)
+            )
+          ],
+          //Slider Container properties
+          options:CarouselOptions(
+            autoPlay: false,
+            scrollDirection:Axis.vertical
+          ),
+        ),
+      ),
+    );
   }
 }
 
