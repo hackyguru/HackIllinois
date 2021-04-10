@@ -36,6 +36,7 @@ dependencies:
   giffy_dialog: ^1.8.0
   easy_gradient_text: ^1.0.0
   lite_rolling_switch: ^0.1.1
+  fswitch: ^1.1.2
 
 dev_dependencies:
   flutter_test:

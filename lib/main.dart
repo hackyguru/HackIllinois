@@ -4,12 +4,13 @@ import 'package:easy_gradient_text/easy_gradient_text.dart';
 import 'splashscreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+import 'package:fswitch/fswitch.dart';
 
 void main() {
   runApp(MyApp());
   doWhenWindowReady(() {
     final win = appWindow;
-    final initialSize = Size(1000, 750);
+    final initialSize = Size(1000, 680);
     win.minSize = initialSize;
     win.size = initialSize;
     win.alignment = Alignment.center;
@@ -74,28 +75,124 @@ class Main extends StatelessWidget {
                   WindowTitleBarBox(
                       child: Row(children: [
                     Padding(
-                      padding: EdgeInsets.fromLTRB(12, 3, 3, 3),
-                      child: GradientText(
-                          text: "Rekindle",
-                          colors: [Color(0xFFF15C4B), Colors.orange],
-                          style: GoogleFonts.poppins(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
+                      padding: EdgeInsets.fromLTRB(15, 3, 3, 3),
+                      child: Row(
+                        children: [
+                          GradientText(
+                              text: "Rekindle",
+                              colors: [Color(0xFFF15C4B), Colors.orange],
+                              style: GoogleFonts.poppins(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
+                        ],
+                      ),
                     ),
                     Expanded(child: MoveWindow()),
                     WindowButtons()
                   ])),
                   // Body here
-                  SizedBox(height: 30),
-                  GradientText(
-                      text: "Rekindle",
-                      colors: [Colors.white, Colors.white],
-                      style: GoogleFonts.poppins(
-                          fontSize: 20, fontWeight: FontWeight.bold)),
-                  SizedBox(height: 30),
                 ]),
                 Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                          icon: Icon(
+                            Icons.info,
+                            color: Colors.white.withOpacity(0.6),
+                          ),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => new AlertDialog(
+                                
+                                backgroundColor: Colors.grey.withOpacity(0.95),
+                                title: new Text('Disclaimer'),
+                                content: Container(
+                                  height: 70,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                          'Rekindle is an open-source and free-to-use deep faking tool developed at'),
+                                      Text(
+                                          'Hack Illinois 2021. We expect the users to use our tool for fair purposes.'),
+                                      Text(
+                                          'We are not responsible for any consequences that you face by using Rekindle.'),
+                                    ],
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  new FlatButton(
+                                    onPressed: () {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop(); // dismisses only the dialog and returns nothing
+                                    },
+                                    child: new Text(
+                                      'OK',
+                                      style: GoogleFonts.poppins(
+                                          color: Color(0xFFF15C4B)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
+                      IconButton(
+                          icon: Icon(
+                            Icons.help,
+                            color: Colors.white.withOpacity(0.6),
+                          ),
+                          onPressed: (){
+                            showDialog(
+                              context: context,
+                              builder: (context) => new AlertDialog(
+                                
+                                backgroundColor: Colors.grey.withOpacity(0.95),
+                                title: new Text('FAQ'),
+                                content: Container(
+                                  height: 200,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                          'How to use Rekindle?',style: TextStyle(fontWeight:FontWeight.bold),),
+                                      Text(
+                                          'Select a face from the faces section and you will find the image deepfaked in real time.'),
+                                      Text(
+                                          'A detailed guide is available at github.com/hackyguru/HackIllinois.'),
+                                      SizedBox(height: 20),
+                                      Text(
+                                          'Is Rekindle open source?',style: TextStyle(fontWeight:FontWeight.bold),),
+                                      Text(
+                                          'Yes, Rekindle is open source :) feel free to contribute!'),
+                                      SizedBox(height: 20),
+                                      Text(
+                                          'Are there dependencies?',style: TextStyle(fontWeight:FontWeight.bold),),
+                                      Text(
+                                          'Rekindle needs OBS Studio and Python 3 to be installed on your machine.'),
+                                    ],
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  new FlatButton(
+                                    onPressed: () {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop(); // dismisses only the dialog and returns nothing
+                                    },
+                                    child: new Text(
+                                      'OK',
+                                      style: GoogleFonts.poppins(
+                                          color: Color(0xFFF15C4B)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          })
+                    ],
+                  ),
                   Padding(
-                    padding: const EdgeInsets.all(40.0),
+                    padding: const EdgeInsets.fromLTRB(40.0, 20, 40, 20),
                     child: Row(
                       children: [
                         Container(
@@ -117,27 +214,211 @@ class Main extends StatelessWidget {
                   )
                 ]),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(40,10,0,0),
-                  child: Row(
-                    children: [
-                      LiteRollingSwitch(
-                        //initial value
-                        value: false,
-                        textOn: 'On',
-                        textOff: 'Off',
-                        colorOn: Colors.greenAccent[700],
-                        colorOff: Colors.redAccent[700],
-                        iconOn: Icons.done,
-                        iconOff: Icons.remove_circle_outline,
-                        textSize: 20.0,
-                        onChanged: (bool state) {
-                          //Use it to manage the different states
-                          print('Current State of SWITCH IS: $state');
-                        },
+                  padding: const EdgeInsets.fromLTRB(40, 10, 40, 0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.grey.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Row(
+                        children: [
+                          // Virtual camera
+                          Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Column(
+                                    children: [
+                                      FSwitch(
+                                        color: Colors.red,
+                                        openColor: Colors.green,
+                                        width: 150.0,
+                                        height: 35.538,
+                                        onChanged: (v) {},
+                                        closeChild: Text(
+                                          "Virtual camera off",
+                                          style: GoogleFonts.poppins(
+                                            color: Colors.white,
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        openChild: Text("Virtual camera on",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.white,
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w500,
+                                            )),
+                                      ),
+                                      SizedBox(height: 15),
+                                      Text("Enable to use zoom/ gmeet etc.",
+                                          style: GoogleFonts.poppins(
+                                            color:
+                                                Colors.white.withOpacity(0.6),
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w500,
+                                          ))
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 30),
+
+                          // Face crop
+                          Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Column(
+                                    children: [
+                                      FSwitch(
+                                        color: Colors.red,
+                                        openColor: Colors.green,
+                                        width: 150.0,
+                                        height: 35.538,
+                                        onChanged: (v) {},
+                                        closeChild: Text(
+                                          "Face cropping off",
+                                          style: GoogleFonts.poppins(
+                                            color: Colors.white,
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        openChild: Text("Face cropping on",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.white,
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w500,
+                                            )),
+                                      ),
+                                      SizedBox(height: 15),
+                                      Text("Automatic face cropping",
+                                          style: GoogleFonts.poppins(
+                                            color:
+                                                Colors.white.withOpacity(0.6),
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w500,
+                                          ))
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 30),
+
+                          // Flip video
+                          Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Column(
+                                    children: [
+                                      IconButton(
+                                          icon: Icon(
+                                            Icons.flip,
+                                            color: Colors.white,
+                                          ),
+                                          onPressed: null),
+                                      SizedBox(height: 15),
+                                      Text("Flip video",
+                                          style: GoogleFonts.poppins(
+                                            color:
+                                                Colors.white.withOpacity(0.6),
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w500,
+                                          ))
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 50),
+                          // What is Rekindle
+                          Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                GradientText(
+                                    text: "What is Rekindle?",
+                                    colors: [Color(0xFFF15C4B), Colors.orange],
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold)),
+                                SizedBox(height: 5),
+                                Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Rekindle is a deep faking tool which enables you to",
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 12,
+                                            color:
+                                                Colors.white.withOpacity(0.6)),
+                                      ),
+                                      Text(
+                                        "visualize yourself as a person whom you miss. Rekindle",
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 12,
+                                            color:
+                                                Colors.white.withOpacity(0.6)),
+                                      ),
+                                      Text(
+                                        "aims in using deep faking for good!",
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 12,
+                                            color:
+                                                Colors.white.withOpacity(0.6)),
+                                      )
+                                    ])
+                              ])
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                )
+                ),
+                SizedBox(height: 50),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text(
+                    "Made with",
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                        fontSize: 12, color: Colors.white.withOpacity(0.6)),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(
+                    Icons.favorite,
+                    size: 14,
+                    color: Colors.white.withOpacity(0.6),
+                  ),
+                  SizedBox(width: 5),
+                  Text(
+                    "at Hack Illinois 2021",
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.poppins(
+                        fontSize: 12, color: Colors.white.withOpacity(0.6)),
+                  )
+                ])
               ],
             )));
   }
