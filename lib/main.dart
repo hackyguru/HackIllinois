@@ -5,6 +5,8 @@ import 'splashscreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:fswitch/fswitch.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:floatingpanel/floatingpanel.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,12 +27,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            body: WindowBorder(
-                color: borderColor,
-                width: 1,
-                child: Row(children: [Splash()]))));
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: WindowBorder(
+            color: borderColor,
+            width: 1,
+            child: Row(
+              children: [Splash()],
+            )),
+      ),
+    );
   }
 }
 
@@ -104,13 +110,13 @@ class Main extends StatelessWidget {
                             showDialog(
                               context: context,
                               builder: (context) => new AlertDialog(
-                                
                                 backgroundColor: Colors.grey.withOpacity(0.95),
                                 title: new Text('Disclaimer'),
                                 content: Container(
                                   height: 70,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                           'Rekindle is an open-source and free-to-use deep faking tool developed at'),
@@ -142,32 +148,41 @@ class Main extends StatelessWidget {
                             Icons.help,
                             color: Colors.white.withOpacity(0.6),
                           ),
-                          onPressed: (){
+                          onPressed: () {
                             showDialog(
                               context: context,
                               builder: (context) => new AlertDialog(
-                                
                                 backgroundColor: Colors.grey.withOpacity(0.95),
                                 title: new Text('FAQ'),
                                 content: Container(
                                   height: 200,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                          'How to use Rekindle?',style: TextStyle(fontWeight:FontWeight.bold),),
+                                        'How to use Rekindle?',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                       Text(
                                           'Select a face from the faces section and you will find the image deepfaked in real time.'),
                                       Text(
                                           'A detailed guide is available at github.com/hackyguru/HackIllinois.'),
                                       SizedBox(height: 20),
                                       Text(
-                                          'Is Rekindle open source?',style: TextStyle(fontWeight:FontWeight.bold),),
+                                        'Is Rekindle open source?',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                       Text(
                                           'Yes, Rekindle is open source :) feel free to contribute!'),
                                       SizedBox(height: 20),
                                       Text(
-                                          'Are there dependencies?',style: TextStyle(fontWeight:FontWeight.bold),),
+                                        'Are there dependencies?',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                       Text(
                                           'Rekindle needs OBS Studio and Python 3 to be installed on your machine.'),
                                     ],
@@ -208,7 +223,7 @@ class Main extends StatelessWidget {
                               )),
                         ),
                         SizedBox(width: 10),
-                        Text("Insert here") // Face selection
+                        Carousal()
                       ],
                     ),
                   )
@@ -423,6 +438,53 @@ class Main extends StatelessWidget {
             )));
   }
 }
+
+class Carousal extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        child: CarouselSlider(
+          items: [
+            Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 115,
+                  backgroundImage: AssetImage("assets/Images/musk.png"),
+                )),
+            Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 115,
+                  backgroundImage: AssetImage('assets/Images/obama.jpg'),
+                )),
+            Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 115,
+                    backgroundImage: AssetImage(
+                      'assets/Images/gandhi.jpg',
+                    ))),
+            Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 115,
+                  backgroundImage: AssetImage('assets/Images/trump.png'),
+                ))
+          ],
+          //Slider Container properties
+          options:
+              CarouselOptions(autoPlay: false, scrollDirection: Axis.vertical),
+        ),
+      ),
+    );
+  }
+}
+//Hello this is just a minor upgrade
 
 final buttonColors = WindowButtonColors(
     iconNormal: Color(0xFFF15C4B),

@@ -7,8 +7,6 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:easy_gradient_text/easy_gradient_text.dart';
 import 'package:lottie/lottie.dart';
 
-
-
 const backgroundStartColor = Color(0xFF2E2F49);
 const backgroundEndColor = Color(0xFF2A2A41);
 
@@ -25,14 +23,19 @@ class SplashScreen extends StatelessWidget {
                   stops: [0.0, 1.0]),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-               Lottie.asset("assets/people_flow.json"),
-               SizedBox(height: 20),
-               GradientText(text: "Rekindle", colors: [Color(0xFFF15C4B),Colors.orange], style: GoogleFonts.poppins(fontSize: 60, fontWeight: FontWeight.bold )),
-               Text("Deep fakes for rekindling people", style: GoogleFonts.poppins(color: Colors.white))
-            ])));
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Lottie.asset("assets/people_flow.json"),
+                  SizedBox(height: 20),
+                  GradientText(
+                      text: "Rekindle",
+                      colors: [Color(0xFFF15C4B), Colors.orange],
+                      style: GoogleFonts.poppins(
+                          fontSize: 60, fontWeight: FontWeight.bold)),
+                  Text("Deep fakes for rekindling people",
+                      style: GoogleFonts.poppins(color: Colors.white))
+                ])));
   }
 }
 
