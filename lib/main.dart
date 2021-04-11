@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:fswitch/fswitch.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:floatingpanel/floatingpanel.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,9 +32,22 @@ class MyApp extends StatelessWidget {
             body: WindowBorder(
                 color: borderColor,
                 width: 1,
-                child: Row(children: [Splash()]))));
+                child: Row(children: [Splash()],
+                
+              
+                )
+              
+               
+                ),
+           
+             
+                ),
+                
+                
+                );
   }
 }
+
 
 class Splash extends StatefulWidget {
   @override
@@ -434,19 +448,19 @@ class Carousal extends StatelessWidget {
           items: [
             Padding(
               padding: const EdgeInsets.all(2.0),
-              child:CircleAvatar(backgroundColor:Colors.white,radius: 100,backgroundImage:NetworkImage('assets/Images/musk.png'),)
+              child:CircleAvatar(backgroundColor:Colors.white,radius: 115,backgroundImage:NetworkImage('assets/Images/musk.png'))
             ),
             Padding(
               padding: const EdgeInsets.all(2.0),
-              child: CircleAvatar(backgroundColor:Colors.white,radius: 100,backgroundImage:NetworkImage('assets/Images/obama.jpg'),)
+              child: CircleAvatar(backgroundColor:Colors.white,radius: 115,backgroundImage:NetworkImage('assets/Images/obama.jpg'),)
             ),
             Padding(
               padding: const EdgeInsets.all(2.0),
-              child: CircleAvatar(backgroundColor:Colors.white,radius: 100,backgroundImage:NetworkImage('assets/Images/gandhi.jpg'))
+              child: CircleAvatar(backgroundColor:Colors.white,radius: 115,backgroundImage:NetworkImage('assets/Images/gandhi.jpg',))
             ),
             Padding(
               padding: const EdgeInsets.all(2.0),
-              child: CircleAvatar(backgroundColor:Colors.white,radius: 100,backgroundImage:NetworkImage('assets/Images/trump.png'),)
+              child: CircleAvatar(backgroundColor:Colors.white,radius: 115,backgroundImage:NetworkImage('assets/Images/trump.png'),)
             )
           ],
           //Slider Container properties
